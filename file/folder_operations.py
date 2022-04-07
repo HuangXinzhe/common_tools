@@ -1,7 +1,3 @@
-"""
-获取当前文件夹路径、当前文件夹下子文件夹和当前文件夹下文件
-"""
-
 import os
 
 
@@ -23,14 +19,12 @@ def file_name(file_dir):
     """
 
     for root, dirs, files in os.walk(file_dir):
-        print(root)  # 当前目录路径
-        print(dirs)  # 当前路径下所有子目录
-        print(files)  # 当前路径下所有非目录子文件
+        # print(root)  # 当前目录路径
+        # print(dirs)  # 当前路径下所有子目录
+        # print(files)  # 当前路径下所有非目录子文件
 
         return files
 
 
 if __name__ == "__main__":
     print(file_name(r'C:\Users\86183\Desktop\简历项目资料'))
-
-
