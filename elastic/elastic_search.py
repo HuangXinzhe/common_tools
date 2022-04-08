@@ -1,12 +1,59 @@
 from datetime import datetime
 from elasticsearch import Elasticsearch
 
-# By default we connect to localhost:9200
 es = Elasticsearch()
 
-# Datetimes will be serialized...
-es.index(index="my-index-000001", doc_type="test-type", id=42, body={"any": "data", "timestamp": datetime.now()})
+
+def write_data(index_name, id_number, document_context):
+    """
+    将数据写入ElasticSearch
+
+    :param index_name:索引名
+    :param id_number:id
+    :param document_context:将要写入的数据
+    :return:返回输入数据的反馈
+    """
+
+    res = es.index(index=index_name, id=id_number, document=document_context)
+
+    return res
 
 
-# ...but not deserialized
-es.get(index="my-index-000001", doc_type="test-type", id=42)['_source']
+def get_data(index_name, id_number):
+    """
+    读取数据
+
+    :param index_name: 索引名
+    :param id_number: id
+    :return: 返回对应索引和id的数据
+    """
+
+    res = es.get(index=index_name, id=id_number)
+
+    return res
+
+def refresh_data(index_name):
+    """
+
+
+    :param index_name:
+    :return:
+    """
+
+    es.indices.refresh(index=index_name)
+
+
+if __name__ == "__main__":
+    # 1. 数据输入测试
+    # doc = {
+    #     'author': '王洋',
+    #     'text': '测试',
+    #     'timestamp': datetime.now(),
+    # }
+    #
+    # res = write_data("test-index", 3, doc)
+    # print(res['result'])
+
+    # 2. 读取数据
+    res = get_data("test-index", 1)
+    print(res['_source'])
