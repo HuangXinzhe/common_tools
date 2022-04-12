@@ -1,4 +1,5 @@
 import jieba
+from file.read_file import *
 
 
 def frequency(file, number):
@@ -28,5 +29,29 @@ def frequency(file, number):
     return word_list
 
 
+def stop_words(word_list):
+    """
+    去除停用词
+
+    :param word_list: 输入单词列表
+    :return: 输出去除停用词的单词列表
+    """
+
+    stop_words_list = open_read_file('./data/cn_stopwords.txt')
+
+    for word in word_list:
+        if word in stop_words_list:
+            word_list.remove(word)
+        else:
+            continue
+
+    return word_list
+
+
 if __name__ == "__main__":
-    print(frequency("resume_paper.txt", 10))
+    # 输入高词频单词
+    # print(frequency("resume_paper.txt", 10))
+
+    # 去除停用词
+    word_list = frequency("resume_paper.txt", 10)
+    print(stop_words(word_list))
