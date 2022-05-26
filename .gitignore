@@ -4,3 +4,4 @@ $ cat .gitignore
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 test.py
+nlp/model/gru_crf_model/label_old_only_work_project.txt
