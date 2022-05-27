@@ -8,7 +8,7 @@ from tqdm import tqdm
 import sys
 
 
-class GRU_CRF(tf.keras.Model):
+class LinerCRF(tf.keras.Model):
     def __init__(self, tag_size):
         super().__init__()
         # 超参定义
