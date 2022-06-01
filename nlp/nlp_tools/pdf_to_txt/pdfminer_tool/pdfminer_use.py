@@ -62,4 +62,5 @@ class read_file:
 
 if __name__ == "__main__":
     read = read_file()
-    print(read.read_pdf('/Users/greedy/Documents/所有简历数据/IT/29.pdf'))
+    # print(read.read_pdf('/Users/greedy/Documents/所有简历数据/IT/29.pdf'))
+    print(read.read_pdf(r'D:\简历项目\所有简历数据\IT/29.pdf'))

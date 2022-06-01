@@ -8,7 +8,7 @@ from tqdm import tqdm
 import sys
 
 
-class LinerCRF(tf.keras.Model):
+class BiGRUCRF(tf.keras.Model):
     def __init__(self, tag_size):
         super().__init__()
         # 超参定义
@@ -19,7 +19,8 @@ class LinerCRF(tf.keras.Model):
         # 模型结构定义
         self.Embed = None
         # self.Hidden = [layers.GRU() for i in range(3)]
-        self.Hidden = layers.GRU(64, return_sequences=True)
+        # self.Hidden = layers.GRU(64, return_sequences=True)
+        self.Hidden = layers.Bidirectional(layers.GRU(64, return_sequences=True))
         self.Output = tfa.layers.CRF(self.tag_size)
         #
         self.optimizer = Adam(learning_rate=0.001)
