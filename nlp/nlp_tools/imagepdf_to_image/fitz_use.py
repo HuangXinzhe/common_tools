@@ -12,4 +12,4 @@ for pg in range(pdfDoc.pageCount):
     pix = page.get_pixmap(matrix=mat, alpha=False)
 
     file_name = re.search('(.*)/(.*).pdf', file).group(2)
-    pix.writePNG('./image/' + f'{file_name}_{pg}.jpg')  # 将图片写入指定的文件夹内
+    pix.writePNG('./image_1/' + f'{file_name}_{pg}.jpg')  # 将图片写入指定的文件夹内
