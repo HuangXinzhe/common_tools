@@ -16,6 +16,6 @@
 
 from PIL import Image
 import pytesseract
-image = Image.open('0001.jpg')#打开图片
+image = Image.open('101pdf.jpg')#打开图片
 result = pytesseract.image_to_string(image,lang='chi_sim')#使用简体中文字库识别图片并返回结果
 print(result)#打印识别的图片内容
