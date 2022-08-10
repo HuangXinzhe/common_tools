@@ -3,7 +3,7 @@ import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 from paddleocr import PaddleOCR, draw_ocr
-from common_tools.utils import file_name
+from utils import file_name
 from PIL import Image
 
 # Paddleocr目前支持的多语言语种可以通过修改lang参数进行切换
