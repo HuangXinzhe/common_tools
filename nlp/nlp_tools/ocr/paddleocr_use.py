@@ -11,10 +11,10 @@ import time
 # 例如`ch`, `en`, `fr`, `german`, `korean`, `japan`
 ocr = PaddleOCR(use_angle_cls=True, lang="ch")  # need to run only once to download and load model into memory
 start_time = time.time()
-all_jpg = file_name('../imagepdf_to_image/image_2/')
+all_jpg = file_name('../imagepdf_to_image/image_1/')
 txt_content = ''
 for single_jpg in all_jpg:
-    img_path = f'../imagepdf_to_image/image_2/{single_jpg}'
+    img_path = f'../imagepdf_to_image/image_1/{single_jpg}'
     result = ocr.ocr(img_path, cls=True)
 
     # print(result)
