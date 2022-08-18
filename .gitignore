@@ -7,3 +7,5 @@ test.py
 nlp/model/gru_crf_model/label_old_only_work_project.txt
 nlp/nlp_tools/imagepdf_to_image/image_*
 nlp/nlp_tools/ocr/result
+test.py
+test.txt
