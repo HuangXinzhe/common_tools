@@ -3,7 +3,7 @@ from file.read_file import *
 
 
 def frequency(file, number):
-    """
+    """pycharm
     统计输入文本的词频
 
     :param file: 输入文本

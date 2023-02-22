@@ -9,3 +9,4 @@ nlp/nlp_tools/imagepdf_to_image/image_*
 nlp/nlp_tools/ocr/result
 test.py
 test.txt
+hugging_face/directory_on_my_computer

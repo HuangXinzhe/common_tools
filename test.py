@@ -124,17 +124,17 @@
 #     print('gone')
 
 
-from cnocr import CnOcr
+# from cnocr import CnOcr
 from utils import file_name
 import time
 
 # 简单用法
-img_fp = r'D:\common_tools\common_tools\nlp\nlp_tools\imagepdf_to_image\image_1\101_0.jpg'
-
-# ocr = CnOcr()  # 所有参数都使用默认值
-ocr = CnOcr(rec_model_name='ch_PP-OCRv3')
-
-out = ocr.ocr(img_fp)
+# img_fp = r'D:\common_tools\common_tools\nlp\nlp_tools\imagepdf_to_image\image_1\101_0.jpg'
+#
+# # ocr = CnOcr()  # 所有参数都使用默认值
+# ocr = CnOcr(rec_model_name='ch_PP-OCRv3')
+#
+# out = ocr.ocr(img_fp)
 
 # start_time = time.time()
 # all_jpg = file_name('../imagepdf_to_image/image_1/')
@@ -158,5 +158,51 @@ out = ocr.ocr(img_fp)
 # end_time = time.time()
 # print(end_time-start_time)
 
+def quick_sort(lists,i,j):
+    if i >= j:
+        return lists
+    pivot = lists[i]
+    low = i
+    high = j
+    while i < j:
+        while i < j and lists[j] >= pivot:
+            j -= 1
+        lists[i]=lists[j]
+        # lists[i], lists[j] = lists[j], lists[i]
+        while i < j and lists[i] <=pivot:
+            i += 1
+        lists[j]=lists[i]
+        # lists[j], lists[i] = lists[i], lists[j]
+    lists[i] = pivot
+    # lists[j] = pivot
+    quick_sort(lists,low,i-1)
+    quick_sort(lists,i+1,high)
+    return lists
 
+if __name__=="__main__":
+    lists=[30,24,5,58,18,36,12,42,39]
+    print("排序前的序列为：")
+    for i in lists:
+        print(i,end =" ")
+    print("\n排序后的序列为：")
+    for i in quick_sort(lists,0,len(lists)-1):
+        print(i,end=" ")
 
+def quick_sort(nums, i, j):
+    if i >= j:
+        return nums
+    else:
+        prvoit = nums[i]
+        low = i
+        high = j
+        while i < j:
+            while i < j and nums[j] >= prvoit:
+                j -= 1
+            nums[i] = nums[j]
+            while i < j and nums[i] <= prvoit:
+                i += 1
+            nums[j] = nums[i]
+        nums[i] = prvoit
+        quick_sort(lists, low, i-1)
+        quick_sort(lists, i+1, high)
+        return lists
