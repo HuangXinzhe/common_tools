@@ -13,7 +13,7 @@ from sklearn_crfsuite import metrics
 from data_processing import *
 from collections import Counter
 
-import matplotlib.pyplot as plt
+import matplotlib_note.pyplot as plt
 
 plt.style.use('ggplot')
 

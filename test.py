@@ -158,51 +158,100 @@ import time
 # end_time = time.time()
 # print(end_time-start_time)
 
-def quick_sort(lists,i,j):
-    if i >= j:
-        return lists
-    pivot = lists[i]
-    low = i
-    high = j
-    while i < j:
-        while i < j and lists[j] >= pivot:
-            j -= 1
-        lists[i]=lists[j]
-        # lists[i], lists[j] = lists[j], lists[i]
-        while i < j and lists[i] <=pivot:
-            i += 1
-        lists[j]=lists[i]
-        # lists[j], lists[i] = lists[i], lists[j]
-    lists[i] = pivot
-    # lists[j] = pivot
-    quick_sort(lists,low,i-1)
-    quick_sort(lists,i+1,high)
-    return lists
+# def quick_sort(lists,i,j):
+#     if i >= j:
+#         return lists
+#     pivot = lists[i]
+#     low = i
+#     high = j
+#     while i < j:
+#         while i < j and lists[j] >= pivot:
+#             j -= 1
+#         lists[i]=lists[j]
+#         # lists[i], lists[j] = lists[j], lists[i]
+#         while i < j and lists[i] <=pivot:
+#             i += 1
+#         lists[j]=lists[i]
+#         # lists[j], lists[i] = lists[i], lists[j]
+#     lists[i] = pivot
+#     # lists[j] = pivot
+#     quick_sort(lists,low,i-1)
+#     quick_sort(lists,i+1,high)
+#     return lists
+#
+# if __name__=="__main__":
+#     lists=[30,24,5,58,18,36,12,42,39]
+#     print("排序前的序列为：")
+#     for i in lists:
+#         print(i,end =" ")
+#     print("\n排序后的序列为：")
+#     for i in quick_sort(lists,0,len(lists)-1):
+#         print(i,end=" ")
+#
+# def quick_sort(nums, i, j):
+#     if i >= j:
+#         return nums
+#     else:
+#         prvoit = nums[i]
+#         low = i
+#         high = j
+#         while i < j:
+#             while i < j and nums[j] >= prvoit:
+#                 j -= 1
+#             nums[i] = nums[j]
+#             while i < j and nums[i] <= prvoit:
+#                 i += 1
+#             nums[j] = nums[i]
+#         nums[i] = prvoit
+#         quick_sort(lists, low, i-1)
+#         quick_sort(lists, i+1, high)
+#         return lists
 
-if __name__=="__main__":
-    lists=[30,24,5,58,18,36,12,42,39]
-    print("排序前的序列为：")
-    for i in lists:
-        print(i,end =" ")
-    print("\n排序后的序列为：")
-    for i in quick_sort(lists,0,len(lists)-1):
-        print(i,end=" ")
+# line = "2 3 4"
+# # print(line.split())
+# a = line.split()
+# # print(int(a[0]) + int(a[1]))
+# # a = [int(x) for x in a]
+# a = list(map(int, a))
+# A = []
+# B = []
+# A.append(a)
+# A.append(a)
+# print(A)
+# B = [[1, 1], [1, 1], [1, 1]]
+# print(A*B)
 
-def quick_sort(nums, i, j):
-    if i >= j:
-        return nums
+# str_1 = "sdfsd"
+# for i in range(len(str_1)):
+#     print(0)
+
+
+
+
+number_list = [3, 5, -1, -7]
+
+def add(a_5, a_3, number_list):
+    if number_list == []:
+        if sum(a_5) == sum(a_3):
+            return True
+        else:
+            return False
     else:
-        prvoit = nums[i]
-        low = i
-        high = j
-        while i < j:
-            while i < j and nums[j] >= prvoit:
-                j -= 1
-            nums[i] = nums[j]
-            while i < j and nums[i] <= prvoit:
-                i += 1
-            nums[j] = nums[i]
-        nums[i] = prvoit
-        quick_sort(lists, low, i-1)
-        quick_sort(lists, i+1, high)
-        return lists
+        return add(a_5+number_list[:1], a_3, number_list[1:]) or add(a_5, a_3+number_list[:1], number_list[1:])
+
+a_5 = []
+a_3 = []
+for i in number_list:
+    if int(i) % 5 == 0:
+        a_5.append(int(i))
+        number_list.remove(i)
+    elif int(i) % 3 == 0:
+        a_3.append(int(i))
+        number_list.remove(i)
+
+if add(a_5, a_3, number_list):
+    print('true')
+else:
+    print('false')
+
+

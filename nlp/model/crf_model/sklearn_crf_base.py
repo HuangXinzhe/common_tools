@@ -9,7 +9,7 @@ from sklearn.model_selection import GridSearchCV
 import sklearn_crfsuite
 from sklearn_crfsuite import scorers
 from sklearn_crfsuite import metrics
-import matplotlib.pyplot as plt
+import matplotlib_note.pyplot as plt
 from data_processing import *
 
 plt.style.use('ggplot')
