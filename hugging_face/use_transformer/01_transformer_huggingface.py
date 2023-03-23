@@ -6,6 +6,23 @@
 """
 
 # ==============================第一部分_整体模型完成==============================
+"""
+将一些文本传递到pipeline时涉及三个主要步骤：
+    1、文本被预处理为模型可以理解的格式。
+    2、预处理的输入被传递给模型。
+    3、模型处理后输出最终人类可以理解的结果。
+
+现在可用的pipeline
+    feature-extraction (get the vector representation of a text)
+    fill-mask
+    ner (named entity recognition)
+    question-answering
+    sentiment-analysis
+    summarization
+    text-generation
+    translation
+    zero-shot-classification
+"""
 # from transformers import pipeline
 # 情感分析，积极还是消极
 
@@ -24,6 +41,12 @@
 # print(answer)
 
 # ==============================第二部分_使用分词器进行预处理==============================
+"""
+tokenizer
+    将输入拆分为单词、子单词或符号（如标点符号），称为标记(token)
+    将每个标记(token)映射到一个整数
+    添加可能对模型有用的其他输入
+"""
 from transformers import AutoTokenizer
 
 checkpoint = "distilbert-base-uncased-finetuned-sst-2-english"  # 使用此模型的权重

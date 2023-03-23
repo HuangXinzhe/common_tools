@@ -228,30 +228,41 @@ import time
 
 
 
-number_list = [3, 5, -1, -7]
+# number_list = [3, 5, -1, -7]
+#
+# def add(a_5, a_3, number_list):
+#     if number_list == []:
+#         if sum(a_5) == sum(a_3):
+#             return True
+#         else:
+#             return False
+#     else:
+#         return add(a_5+number_list[:1], a_3, number_list[1:]) or add(a_5, a_3+number_list[:1], number_list[1:])
+#
+# a_5 = []
+# a_3 = []
+# for i in number_list:
+#     if int(i) % 5 == 0:
+#         a_5.append(int(i))
+#         number_list.remove(i)
+#     elif int(i) % 3 == 0:
+#         a_3.append(int(i))
+#         number_list.remove(i)
+#
+# if add(a_5, a_3, number_list):
+#     print('true')
+# else:
+#     print('false')
 
-def add(a_5, a_3, number_list):
-    if number_list == []:
-        if sum(a_5) == sum(a_3):
-            return True
-        else:
-            return False
-    else:
-        return add(a_5+number_list[:1], a_3, number_list[1:]) or add(a_5, a_3+number_list[:1], number_list[1:])
+from transformers import AutoTokenizer
 
-a_5 = []
-a_3 = []
-for i in number_list:
-    if int(i) % 5 == 0:
-        a_5.append(int(i))
-        number_list.remove(i)
-    elif int(i) % 3 == 0:
-        a_3.append(int(i))
-        number_list.remove(i)
+checkpoint = "distilbert-base-uncased-finetuned-sst-2-english"  # 使用此模型的权重
+tokenizer = AutoTokenizer.from_pretrained(checkpoint)  # 使用该模型的标记器
 
-if add(a_5, a_3, number_list):
-    print('true')
-else:
-    print('false')
-
-
+raw_inputs = [
+    "I've been waiting for a HuggingFace course my whole life.",
+    "I hate this so much!",
+]
+inputs = tokenizer(raw_inputs, padding=True, truncation=True, return_tensors="pt")  # 获得数据中每个单词的标记
+print(inputs)
+print(**inputs)

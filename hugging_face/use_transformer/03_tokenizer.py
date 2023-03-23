@@ -32,12 +32,13 @@
 # answer = tokenizer("Using a Transformer network is simple")
 # print(answer)  # {'input_ids': [101, 7993, 170, 13809, 23763, 2443, 1110, 3014, 102], 'token_type_ids': [0, 0, 0, 0, 0, 0, 0, 0, 0], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1]}
 
+# 标记器保存的文件：special_tokens_map.json，tokenizer.json，tokenizer_config.json，vocab.txt
 # tokenizer.save_pretrained("directory_on_my_computer")
 
 """
 编码
 1、标记化：将文本拆分为标记
-2、将词符转换为输入ID
+2、将标记转换为输入ID
 """
 from transformers import AutoTokenizer
 
@@ -66,15 +67,13 @@ print(decoded_string)  # 'Using a Transformer network is simple'
 sequence = "I've been waiting for a HuggingFace course my whole life."
 
 model_inputs = tokenizer(sequence)
-print(model_inputs[
-          "input_ids"])  # [101, 1045, 1005, 2310, 2042, 3403, 2005, 1037, 17662, 12172, 2607, 2026, 2878, 2166, 1012, 102]
+print(model_inputs["input_ids"])  # [101, 1045, 1005, 2310, 2042, 3403, 2005, 1037, 17662, 12172, 2607, 2026, 2878, 2166, 1012, 102]
 
 tokens = tokenizer.tokenize(sequence)
 ids = tokenizer.convert_tokens_to_ids(tokens)
 print(ids)  # [1045, 1005, 2310, 2042, 3403, 2005, 1037, 17662, 12172, 2607, 2026, 2878, 2166, 1012]
 
-print(tokenizer.decode(
-    model_inputs["input_ids"]))  # "[CLS] i've been waiting for a huggingface course my whole life. [SEP]"
+print(tokenizer.decode(model_inputs["input_ids"]))  # "[CLS] i've been waiting for a huggingface course my whole life. [SEP]"
 print(tokenizer.decode(ids))  # "i've been waiting for a huggingface course my whole life."
 
 """

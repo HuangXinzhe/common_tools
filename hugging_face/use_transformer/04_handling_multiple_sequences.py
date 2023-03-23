@@ -3,7 +3,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 checkpoint = "distilbert-base-uncased-finetuned-sst-2-english"
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-model = AutoModelForSequenceClassification.from_pretrained(checkpoint)
+model = AutoModelForSequenceClassification.from_pretrained(checkpoint)  # 模型默认输入是多个句子
 
 sequence = "I've been waiting for a HuggingFace course my whole life."
 
@@ -39,6 +39,7 @@ batched_ids = [
     [200, 200, tokenizer.pad_token_id],
 ]
 
+# 1表示注意相对应的标记，0表示不应注意相对应的标记
 attention_mask = [
     [1, 1, 1],
     [1, 1, 0],
@@ -50,5 +51,12 @@ print(outputs.logits)
 
 """
 长序列
+对于Transformers模型，可以通过模型的序列长度是有限的。
+大多数模型处理多达512或1024个令牌的序列，当要求处理更长的序列时，会崩溃。
+此问题有两种解决方案：
+    1、使用支持的序列长度较长的模型。
+    2、截断序列。
+
+通过指定max_sequence_length参数
 sequence = sequence[:max_sequence_length]
 """

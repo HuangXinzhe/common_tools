@@ -1,6 +1,7 @@
 from transformers import pipeline
 
 summarizer = pipeline("summarization")
+# max_length或min_length控制文本摘要长短
 answer = summarizer(
     """
     America has changed dramatically during recent years. Not only has the number of 

@@ -61,6 +61,7 @@ DatasetDict({
  'sentence2': Value(dtype='string', id=None),
  'label': ClassLabel(num_classes=2, names=['not_equivalent', 'equivalent'], names_file=None, id=None),
  'idx': Value(dtype='int32', id=None)}
+ 0代表not_equivalent，1代表equivalent
 """
 
 from transformers import AutoTokenizer
@@ -104,7 +105,22 @@ def tokenize_function(example):
 
 tokenized_datasets = raw_datasets.map(tokenize_function, batched=True)  # 可以通过传递num_proc参数使用并行处理
 # print(tokenized_datasets)
-
+"""
+DatasetDict({
+    train: Dataset({
+        features: ['sentence1', 'sentence2', 'label', 'idx', 'input_ids', 'token_type_ids', 'attention_mask'],
+        num_rows: 3668
+    })
+    validation: Dataset({
+        features: ['sentence1', 'sentence2', 'label', 'idx', 'input_ids', 'token_type_ids', 'attention_mask'],
+        num_rows: 408
+    })
+    test: Dataset({
+        features: ['sentence1', 'sentence2', 'label', 'idx', 'input_ids', 'token_type_ids', 'attention_mask'],
+        num_rows: 1725
+    })
+})
+"""
 
 """
 动态填充语料长度
@@ -118,9 +134,9 @@ samples = tokenized_datasets["train"][:8]
 print(samples)
 samples = {k: v for k, v in samples.items() if k not in ["idx", "sentence1", "sentence2"]}
 print(samples)
-print([len(x) for x in samples["input_ids"]])
+print([len(x) for x in samples["input_ids"]])  # [50, 59, 47, 67, 59, 50, 62, 32]
 
-batch = data_collator(samples)
+batch = data_collator(samples)  # 根据一批中最长的数据进行填充
 print({k: v.shape for k, v in batch.items()})
 """
 {'attention_mask': torch.Size([8, 67]),

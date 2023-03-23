@@ -24,7 +24,7 @@ data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 """
 from transformers import TrainingArguments
 
-training_args = TrainingArguments("test-trainer")
+training_args = TrainingArguments("test-trainer")  # push_to_hub=True，训练期间自动将模型上传至hub
 
 """
 定义模型
@@ -48,14 +48,14 @@ from transformers import Trainer
 #     tokenizer=tokenizer,
 # )
 #
-# trainer.train()
+# trainer.train()  # 模型训练
 
 """
 评估
 Trainer.predict()命令来使用我们的模型进行预测
 """
 # predictions = trainer.predict(tokenized_datasets["validation"])
-# print(predictions.predictions.shape, predictions.label_ids.shape)
+# print(predictions.predictions.shape, predictions.label_ids.shape)  # 输出结果是具有三个字段的命名元组：predictions，label_ids和metrics
 
 import numpy as np
 
@@ -68,18 +68,18 @@ import evaluate
 # metric.compute(predictions=preds, references=predictions.label_ids)
 
 """
-打包
+评估相关打包
 """
 
 
-def compute_metrics(eval_preds):
+def compute_metrics(eval_preds):  # 评价模型的优劣
     metric = evaluate.load("glue", "mrpc")
     logits, labels = eval_preds
     predictions = np.argmax(logits, axis=-1)
     return metric.compute(predictions=predictions, references=labels)
 
 
-training_args = TrainingArguments("test-trainer", evaluation_strategy="epoch")
+training_args = TrainingArguments("test-trainer", evaluation_strategy="epoch")  # 每个epoch后进行验证
 model = AutoModelForSequenceClassification.from_pretrained(checkpoint, num_labels=2)
 
 trainer = Trainer(

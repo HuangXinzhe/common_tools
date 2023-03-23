@@ -35,7 +35,9 @@ model_inputs = tokenizer(sequences, padding="longest")
 # model_inputs = tokenizer(sequences, max_length=8, truncation=True)
 
 
-
+"""
+标记器从不同的框架返回张量，"pt"返回Py Torch张量，"tf"返回TensorFlow张量，"np"返回NumPy数组
+"""
 sequences = ["I've been waiting for a HuggingFace course my whole life.", "So have I!"]
 
 # Returns PyTorch tensors
@@ -46,3 +48,42 @@ model_inputs = tokenizer(sequences, padding=True, return_tensors="tf")
 
 # Returns NumPy arrays
 model_inputs = tokenizer(sequences, padding=True, return_tensors="np")
+
+
+"""
+特殊词符
+"""
+sequence = "I've been waiting for a HuggingFace course my whole life."
+
+model_inputs = tokenizer(sequence)
+print(model_inputs["input_ids"])
+
+tokens = tokenizer.tokenize(sequence)
+ids = tokenizer.convert_tokens_to_ids(tokens)
+print(ids)
+"""
+[101, 1045, 1005, 2310, 2042, 3403, 2005, 1037, 17662, 12172, 2607, 2026, 2878, 2166, 1012, 102]
+[1045, 1005, 2310, 2042, 3403, 2005, 1037, 17662, 12172, 2607, 2026, 2878, 2166, 1012]
+"""
+print(tokenizer.decode(model_inputs["input_ids"]))
+print(tokenizer.decode(ids))
+"""
+"[CLS] i've been waiting for a huggingface course my whole life. [SEP]"
+"i've been waiting for a huggingface course my whole life."
+"""
+
+
+
+"""
+以上完整版
+"""
+import torch
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+checkpoint = "distilbert-base-uncased-finetuned-sst-2-english"
+tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+model = AutoModelForSequenceClassification.from_pretrained(checkpoint)
+sequences = ["I've been waiting for a HuggingFace course my whole life.", "So have I!"]
+
+tokens = tokenizer(sequences, padding=True, truncation=True, return_tensors="pt")
+output = model(**tokens)
