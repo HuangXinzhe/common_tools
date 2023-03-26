@@ -9,6 +9,7 @@ nlp/nlp_tools/imagepdf_to_image/image_*
 nlp/nlp_tools/ocr/result
 test.py
 test.txt
-/hugging_face/use_transformer/directory_on_my_computer/
-/hugging_face/fine_tunning_pretrained_model/test-trainer/
+/hugging_face/01_use_transformer/directory_on_my_computer/
+/hugging_face/02_fine_tunning_pretrained_model/test-trainer/
 /nlp/knowledge_graph/extraction/ltp_data_v3.4.0/
+/hugging_face/03_sharing_models_tokenizer/dummy-model/
