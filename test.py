@@ -226,8 +226,6 @@ import time
 #     print(0)
 
 
-
-
 # number_list = [3, 5, -1, -7]
 #
 # def add(a_5, a_3, number_list):
@@ -254,15 +252,34 @@ import time
 # else:
 #     print('false')
 
-from transformers import AutoTokenizer
+# from transformers import AutoTokenizer
+#
+# checkpoint = "distilbert-base-uncased-finetuned-sst-2-english"  # 使用此模型的权重
+# tokenizer = AutoTokenizer.from_pretrained(checkpoint)  # 使用该模型的标记器
+#
+# raw_inputs = [
+#     "I've been waiting for a HuggingFace course my whole life.",
+#     "I hate this so much!",
+# ]
+# inputs = tokenizer(raw_inputs, padding=True, truncation=True, return_tensors="pt")  # 获得数据中每个单词的标记
+# print(inputs)
+# print(**inputs)
 
-checkpoint = "distilbert-base-uncased-finetuned-sst-2-english"  # 使用此模型的权重
-tokenizer = AutoTokenizer.from_pretrained(checkpoint)  # 使用该模型的标记器
+# from datasets import load_dataset
+#
+# data_files = {"train": "./hugging_face/04_datasets/data/drugsCom_raw/drugsComTrain_raw.tsv", "test": "./hugging_face/04_datasets/data/drugsCom_raw/drugsComTest_raw.tsv"}
+# # \t is the tab character in Python
+# drug_dataset = load_dataset("csv", data_files=data_files, delimiter="\t")
+# print(drug_dataset)
+# print(drug_dataset['train'])
 
-raw_inputs = [
-    "I've been waiting for a HuggingFace course my whole life.",
-    "I hate this so much!",
-]
-inputs = tokenizer(raw_inputs, padding=True, truncation=True, return_tensors="pt")  # 获得数据中每个单词的标记
-print(inputs)
-print(**inputs)
+# Function that computes the acerage of a dataset
+a = {'patient_id': 206461,
+     'drugName': 'Valsartan',
+     'condition': 'left ventricular dysfunction',
+     'review': '"It has no side effect, I take it in combination of Bystolic 5 Mg and Fish Oil"',
+     'rating': 9.0,
+     'date': 'May 20, 2012',
+     'usefulCount': 27,
+     'review_length': 17}
+print(a.column_names)
