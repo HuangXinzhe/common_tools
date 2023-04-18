@@ -274,12 +274,17 @@ import time
 # print(drug_dataset['train'])
 
 # Function that computes the acerage of a dataset
-a = {'patient_id': 206461,
-     'drugName': 'Valsartan',
-     'condition': 'left ventricular dysfunction',
-     'review': '"It has no side effect, I take it in combination of Bystolic 5 Mg and Fish Oil"',
-     'rating': 9.0,
-     'date': 'May 20, 2012',
-     'usefulCount': 27,
-     'review_length': 17}
-print(a.column_names)
+# a = {'patient_id': 206461,
+#      'drugName': 'Valsartan',
+#      'condition': 'left ventricular dysfunction',
+#      'review': '"It has no side effect, I take it in combination of Bystolic 5 Mg and Fish Oil"',
+#      'rating': 9.0,
+#      'date': 'May 20, 2012',
+#      'usefulCount': 27,
+#      'review_length': 17}
+# print(a.column_names)
+
+
+a = [1,2,3]
+print(id(a))
+print(id(a[:]))
