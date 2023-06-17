@@ -14,3 +14,4 @@ test.txt
 /nlp/knowledge_graph/extraction/ltp_data_v3.4.0/
 /hugging_face/03_sharing_models_tokenizer/dummy-model/
 /hugging_face/04_datasets/data/
+/test/
